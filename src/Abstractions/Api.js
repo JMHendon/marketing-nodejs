@@ -111,7 +111,7 @@ class Api {
    */
   _post(resource, params, body, overrideRootResource = null) {
     let url = this.url(overrideRootResource);
-    url += (resource) ? '/' + resource : '';
+    // url += (resource) ? '/' + resource : '';
     url += '.json';
     url += this.getQueryString(params);
 
@@ -121,6 +121,7 @@ class Api {
     return axios.post(url, formData, {headers: this.getHttpHeaders()})
     .then( async response => {
       const jsonResponse = await response;
+      console.log(jsonResponse);
       return new OperationResult(jsonResponse);
     })
     .catch(function (error) {
