@@ -374,6 +374,67 @@ class Contacts {
     };
     return this.api._put('unsubscribe_all', params);
   }
+
+  /**
+   * Unsubscribes Contact from Lists and/or Journeys
+   *
+   * @param {string} email Email address for the contact to be created|updated
+   * @param {string|null} firstName first name of Contact
+   * @param {string|null} lastName last name of Contact
+   * @param {string|null} phone phone number of Contact
+   * @param {string|null} fax fax number of Contact
+   * @param {string|null} uid UID the contact belongs to
+   * @param {array} customField Custom Field passed as array. Keys represent the field names while values represent the values
+   * @param {array} addTags Tags to add to the contact. Non associated array of tagnames
+   * @param {array} removeTags Tags to remove from the contact. Non associative array of tagnames
+   * @param {bool} removeFromDNM Set this true to subcribe contact to the list, and remove it from DNM)
+   * @param {array} subscribeListIds Array of IDs of lists to subscribe the contact to
+   * @param {array} unsubscribeListIds Array of IDs of Lists to unsubscribe the contact from
+   * @param {array} unsubscribeWorkflowIds Array of list of IDs of workflows to unsubscribe the contact from
+   * @param {string|null} unsubscribeCampaign CampaignID to unsubscribe the contact from
+   * @return {OperationResult}
+   */
+  async unsubscribeFromListsAndWorkflows(
+    email,
+    firstName = null,
+    lastName = null,
+    phone = null,
+    fax = null,
+    uid = null,
+    customField = [],
+    addTags = [],
+    removeTags = [],
+    removeFromDNM = false,
+    subscribeListIds = [],
+    unsubscribeListIds = [],
+    unsubscribeWorkflowIds = [],
+    unsubscribeCampaign = null
+  ) {
+    let options = {
+      'subscribe_list_ids': subscribeListIds.join(','),
+      'unsubscribe_list_ids': unsubscribeListIds.join(','),
+      'unsubscribe_workflow_ids': unsubscribeWorkflowIds.join(','),
+      'unsubscribe_campaign': unsubscribeCampaign
+    };
+    options = this.api._discardNullAndEmptyValues(options);
+
+    let contact = {
+      'email': email,
+      'first_name': firstName,
+      'last_name': lastName,
+      'phone': phone,
+      'fax': fax,
+      'uid': uid,
+      'custom_field': customField,
+      'add_tags': addTags,
+      'remove_tags': removeTags,
+      'remove_from_dnm': removeFromDNM,
+      'options': options
+    };
+    contact = this.api._discardNullAndEmptyValues(contact);
+
+    return this.api._post('contacts', [], contact);
+  }
 }
 
 module.exports = Contacts;

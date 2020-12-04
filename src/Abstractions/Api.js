@@ -115,6 +115,8 @@ class Api {
     url += '.json';
     url += this.getQueryString(params);
 
+    console.log(url);
+
     const formData = JSON.stringify(body);
     return axios.post(url, formData, {headers: this.getHttpHeaders()})
     .then( async response => {
