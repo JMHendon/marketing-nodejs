@@ -142,6 +142,8 @@ class Api {
     url += '.json';
     url += this.getQueryString(params);
 
+    console.log(url);
+
     const formData = (typeof body === 'object') ? JSON.stringify(body) : null;
     return axios.put(url, formData, {headers: this.getHttpHeaders()})
     .then( async response => {
