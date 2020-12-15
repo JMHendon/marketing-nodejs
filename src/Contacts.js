@@ -368,6 +368,8 @@ class Contacts {
     };
     contact = this.api._discardNullAndEmptyValues(contact);
 
+    console.log(contact);
+
     return this.api._post('', [], contact);
   }
 
