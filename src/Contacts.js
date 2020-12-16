@@ -334,10 +334,8 @@ class Contacts {
     {
       firstName = null,
       lastName = null,
-      phone = null,
-      fax = null,
       uid = null,
-      customField = [],
+      customField = {},
       addTags = [],
       removeTags = [],
       removeFromDNM = false,
@@ -356,11 +354,9 @@ class Contacts {
     options = this.api._discardNullAndEmptyValues(options);
 
     let contact = {
-      'email': email,
       'first_name': firstName,
+      'email': email,
       'last_name': lastName,
-      'phone': phone,
-      'fax': fax,
       'uid': uid,
       'custom_field': customField,
       'add_tags': addTags,
@@ -368,11 +364,8 @@ class Contacts {
       'remove_from_dnm': removeFromDNM,
       'options': options
     };
+
     contact = this.api._discardNullAndEmptyValues(contact);
-
-    console.log(contact);
-
-    return this.api._post('', [], contact);
   }
 
   /**
