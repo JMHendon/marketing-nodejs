@@ -366,6 +366,8 @@ class Contacts {
     };
 
     contact = this.api._discardNullAndEmptyValues(contact);
+
+    return this.api._post('', [], contact);
   }
 
   /**
