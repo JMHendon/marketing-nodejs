@@ -331,19 +331,21 @@ class Contacts {
    */
   async createOrUpdateContactWithoutSpecifyingList(
     email,
-    firstName = null,
-    lastName = null,
-    phone = null,
-    fax = null,
-    uid = null,
-    customField = [],
-    addTags = [],
-    removeTags = [],
-    removeFromDNM = false,
-    subscribeListIds = [],
-    unsubscribeListIds = [],
-    unsubscribeWorkflowIds = [],
-    unsubscribeCampaign = null
+    {
+      firstName = null,
+      lastName = null,
+      phone = null,
+      fax = null,
+      uid = null,
+      customField = [],
+      addTags = [],
+      removeTags = [],
+      removeFromDNM = false,
+      subscribeListIds = [],
+      unsubscribeListIds = [],
+      unsubscribeWorkflowIds = [],
+      unsubscribeCampaign = null
+    } = {}
   ) {
     let options = {
       'subscribe_list_ids': subscribeListIds.join(','),
