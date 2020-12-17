@@ -365,6 +365,8 @@ class Contacts {
       'options': options
     };
 
+    console.log(addTags);
+
     console.log('createOrUpdateContact Function Contact...');
     console.log(contact);
 
