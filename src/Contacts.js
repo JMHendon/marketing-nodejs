@@ -365,6 +365,9 @@ class Contacts {
       'options': options
     };
 
+    console.log('createOrUpdateContact Function Contact...');
+    console.log(contact);
+
     contact = this.api._discardNullAndEmptyValues(contact);
 
     return this.api._post('', [], contact);
