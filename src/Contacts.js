@@ -367,6 +367,9 @@ class Contacts {
 
     contact = this.api._discardNullAndEmptyValues(contact);
 
+    console.log('Contacts.js contact object log');
+    console.log(contact);
+
     return this.api._post('', [], contact);
   }
 
