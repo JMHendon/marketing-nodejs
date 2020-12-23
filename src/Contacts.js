@@ -339,7 +339,7 @@ class Contacts {
       addTags = [],
       removeTags = [],
       removeFromDNM = false,
-      subscribeListIds = '',
+      subscribeListIds = null,
       unsubscribeListIds = [],
       unsubscribe_workflow_ids = [],
       unsubscribeCampaign = null
