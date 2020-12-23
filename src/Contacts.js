@@ -339,14 +339,14 @@ class Contacts {
       addTags = [],
       removeTags = [],
       removeFromDNM = false,
-      subscribeListIds = [],
+      subscribeListIds = '',
       unsubscribeListIds = [],
       unsubscribe_workflow_ids = [],
       unsubscribeCampaign = null
     } = {}
   ) {
     let options = {
-      'subscribe_list_ids': subscribeListIds.join(','),
+      'subscribe_list_ids': subscribeListIds,
       'unsubscribe_list_ids': unsubscribeListIds.join(','),
       'unsubscribe_workflow_ids': unsubscribe_workflow_ids.join(','),
       'unsubscribe_campaign': unsubscribeCampaign
