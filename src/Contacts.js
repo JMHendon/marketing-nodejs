@@ -345,14 +345,12 @@ class Contacts {
       unsubscribeCampaign = null
     } = {}
   ) {
-    console.log('subscribeListIds: ',subscribeListIds);
     let options = {
       'subscribe_list_ids': subscribeListIds,
       'unsubscribe_list_ids': unsubscribeListIds.join(','),
       'unsubscribe_workflow_ids': unsubscribe_workflow_ids.join(','),
       'unsubscribe_campaign': unsubscribeCampaign
     };
-    console.log('options prior to discard Null: ',options);
     options = this.api._discardNullAndEmptyValues(options);
 
     let contact = {

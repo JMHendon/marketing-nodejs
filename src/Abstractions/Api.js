@@ -123,8 +123,8 @@ class Api {
       return new OperationResult(jsonResponse);
     })
     .catch( async error => {
-      const jsonResponse = await error;
-      return new OperationResult(null, error, jsonResponse);
+      const statusCode = await error.status;
+      return new OperationResult(null, error, statusCode);
     });
   }
 
