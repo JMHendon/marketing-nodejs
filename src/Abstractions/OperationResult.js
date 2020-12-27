@@ -6,10 +6,13 @@ class OperationResult {
    * @param {object|null} apiResponse
    * @param {string|null} errorMessage
    */
-  constructor(apiResponse = null, errorMessage = null) {
+  constructor(apiResponse = null, errorMessage = null, jsonResponse = null) {
     if (!apiResponse) {
       this.isSuccess = false;
       this.errorMessage = errorMessage;
+      if (jsonResponse) {
+        this.statusCode = jsonReponse.status;
+      }
     }
     else {
       const statusCode = apiResponse.status

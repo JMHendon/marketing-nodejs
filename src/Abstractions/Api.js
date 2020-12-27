@@ -123,7 +123,8 @@ class Api {
       return new OperationResult(jsonResponse);
     })
     .catch(function (error) {
-      return new OperationResult(null, error);
+      const jsonResponse = await error;
+      return new OperationResult(null, error, jsonResponse);
     });
   }
 
