@@ -58,22 +58,25 @@ class ProductAndRevenue {
    * @param {string|null} couponCode
    * @return {OperationResult}
    */
-  createOrder(requireUnique,
-              contactEmail,
-              contactFirstName,
-              contactLastName,
-              orderDateTime,
-              orderStatus,
-              originalOrderId,
-              orderItems,
-              customFields = null,
-              addTags = null,
-              removeTags = null,
-              uid = null,
-              listIds = null,
-              grandTotal = null,
-              campaignId = null,
-              couponCode = null
+  createOrder(
+    requireUnique,
+    contactEmail,
+    orderDateTime,
+    orderStatus,
+    originalOrderId,
+    orderItems,
+    {
+      grandTotal = null,
+      campaignId = null,
+      couponCode = null,
+      contactFirstName = null,
+      contactLastName = null,
+      customFields = null,
+      addTags = [],
+      removeTags = [],
+      uid = null,
+      listIds = null
+    } = {}
   ) {
     if (!Helpers.validateEmail(contactEmail)) {
       return new OperationResult(null, `The provided 'contactEmail' is not a well-formed email address.`);
@@ -93,15 +96,17 @@ class ProductAndRevenue {
         'first_name': contactFirstName,
         'last_name': contactLastName
       },
+      'uid': uid,
       'order_date': orderDateTime,
       'order_status': orderStatus,
       'original_order_id': originalOrderId,
       'order_items': orderItems,
-      'uid': uid,
       'campaign_id': campaignId,
       'coupon_code': couponCode,
       'grand_total': grandTotal
     };
+    console.log('product and rev js - order object...');
+    console.log(order);
     if (listIds) {
       order['list_ids'] = listIds;
     }
@@ -133,6 +138,10 @@ class ProductAndRevenue {
       order['remove_tags'] = removeTags;
     }
     let object = { order: order }
+
+    console.log('product and rev js - object object...');
+    console.log(object);
+
     let params = (requireUnique) ? {'unique': true} : [];
     return this.api._post('', params, object);
   }
