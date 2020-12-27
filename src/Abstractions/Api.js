@@ -122,7 +122,7 @@ class Api {
       const jsonResponse = await response;
       return new OperationResult(jsonResponse);
     })
-    .catch(function (error) {
+    .catch( async error => {
       const jsonResponse = await error;
       return new OperationResult(null, error, jsonResponse);
     });
