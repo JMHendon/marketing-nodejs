@@ -105,8 +105,6 @@ class ProductAndRevenue {
       'coupon_code': couponCode,
       'grand_total': grandTotal
     };
-    console.log('product and rev js - order object...');
-    console.log(order);
     if (listIds) {
       order['list_ids'] = listIds;
     }
@@ -138,9 +136,6 @@ class ProductAndRevenue {
       order['remove_tags'] = removeTags;
     }
     let object = { order: order }
-
-    console.log('product and rev js - object object...');
-    console.log(object);
 
     let params = (requireUnique) ? {'unique': true} : [];
     return this.api._post('', params, object);
